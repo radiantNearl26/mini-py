@@ -8,8 +8,8 @@ import random
 class Bank:
     """Class representing a bank account with basic operations."""
 
-    def __init__(self, acc_no: int, acc_name: str, amount: int, 
-                 auth: int, reset: str) -> None: # pylint: disable=too-many-arguments
+    def __init__(self, acc_no: int, acc_name: str, amount: int,
+                 auth: int, reset: str) -> None: # pylint: disable=too-many-arguments, too-many-positional-arguments
         self.acc_no = acc_no
         self.acc_name = acc_name
         self.amount = amount
@@ -112,7 +112,7 @@ class Bank:
                 print("Authentication failed. Access denied!")
                 proceed = 0
                 break
-        
+
         if proceed != 1:
             return
 
@@ -137,7 +137,7 @@ def create_account(name: str, already_exists: list) -> tuple:
         reset = str(input("Enter your reset keyword (n character string): "))
 
         print("Validating account details...")
-        
+
         while acc_no in already_exists:
             acc_no = random.randint(1111, 9999)
         while len(str(auth)) != 6:
@@ -156,6 +156,7 @@ def create_account(name: str, already_exists: list) -> tuple:
         return None
 
 def main():
+    """Main function to run the banking application."""
     print("Banking System Application")
     accounts: dict[str, Bank] = {}
     already_exists: list = []
@@ -190,7 +191,7 @@ def main():
                         print(i, "\n")
                 case _:
                     raise ValueError("Invalid choice entered. Try again!")
-        
+
         except Exception as error: # pylint: disable=broad-exception-caught
             print(f"Unexpected error: {error}. Terminating Program!")
             sys.exit(1)
