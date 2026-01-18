@@ -20,4 +20,4 @@ jobs:
         pip install pylint
     - name: Analysing the code with pylint
       run: |
-        pylint --disable=too-many-arguments,too-many-positional-arguments,broad-exception-caught $(git ls-files '*.py')
+        pylint --fail-under=9.0 --disable=too-many-arguments,too-many-positional-arguments,broad-exception-caught $(git ls-files '*.py')
